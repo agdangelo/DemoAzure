@@ -1,0 +1,23 @@
+{
+	"name": "GetMetadata",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "blobinputstorage",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"folderPath": "csvSol1",
+				"container": "archivossol1"
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": []
+	}
+}
