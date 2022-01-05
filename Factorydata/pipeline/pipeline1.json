@@ -104,7 +104,7 @@
 									"type": "DatasetReference",
 									"parameters": {
 										"NombreTabla": {
-											"value": "substring(item().name,0,lastindexof(item().name,'_'))\n",
+											"value": "concat(substring(item().name,0,lastindexof(item().name,'_')))",
 											"type": "Expression"
 										}
 									}
