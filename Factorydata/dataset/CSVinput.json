@@ -22,7 +22,7 @@
 				"folderPath": "csvSol1",
 				"container": "archivossol1"
 			},
-			"columnDelimiter": ",",
+			"columnDelimiter": ";",
 			"escapeChar": "\\",
 			"quoteChar": "\""
 		},
