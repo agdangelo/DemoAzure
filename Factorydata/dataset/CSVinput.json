@@ -15,6 +15,10 @@
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobStorageLocation",
+				"fileName": {
+					"value": "@dataset().NombreArchivoCSV",
+					"type": "Expression"
+				},
 				"folderPath": "csvSol1",
 				"container": "archivossol1"
 			},
