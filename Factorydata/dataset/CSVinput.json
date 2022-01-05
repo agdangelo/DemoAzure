@@ -1,0 +1,27 @@
+{
+	"name": "CSVinput",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "blobinputstorage",
+			"type": "LinkedServiceReference"
+		},
+		"parameters": {
+			"NombreArchivoCSV": {
+				"type": "string"
+			}
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"folderPath": "csvSol1",
+				"container": "archivossol1"
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"quoteChar": "\""
+		},
+		"schema": []
+	}
+}
