@@ -12,25 +12,21 @@
 					"name": "fuenteVentasCSV"
 				}
 			],
-			"sinks": [],
+			"sinks": [
+				{
+					"dataset": {
+						"referenceName": "CSVDatasetOutputVentas",
+						"type": "DatasetReference"
+					},
+					"name": "sinkVentasCSV"
+				}
+			],
 			"transformations": [
 				{
 					"name": "DerivedColumn1"
-				},
-				{
-					"name": "DerivedColumn2"
-				},
-				{
-					"name": "Join1"
-				},
-				{
-					"name": "DerivedColumn3"
-				},
-				{
-					"name": "Select1"
 				}
 			],
-			"script": "parameters{\n\tPathWildcard as string ('Ventas')\n}\nsource(allowSchemaDrift: true,\n\tvalidateSchema: false,\n\tignoreNoFilesFound: false,\n\twildcardPaths:[($PathWildcard +'*.csv')],\n\tpartitionBy('hash', 1)) ~> fuenteVentasCSV\nDerivedColumn2 derive() ~> DerivedColumn1\nJoin1 derive() ~> DerivedColumn2\nDerivedColumn3 join(joinType:'inner',\n\tbroadcast: 'auto')~> Join1\nSelect1 derive() ~> DerivedColumn3\nfuenteVentasCSV select(skipDuplicateMapInputs: true,\n\tskipDuplicateMapOutputs: true) ~> Select1"
+			"script": "parameters{\n\tPathWildcard as string ('Ventas')\n}\nsource(output(\n\t\tIDVentas as short,\n\t\tFechaVenta as string,\n\t\tNumFactura as string,\n\t\tDNICliente as integer,\n\t\tImporte as string,\n\t\tIDItem as short\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false,\n\tignoreNoFilesFound: false,\n\twildcardPaths:[($PathWildcard +'*.csv')],\n\tpartitionBy('hash', 1)) ~> fuenteVentasCSV\nfuenteVentasCSV derive(FechaVentaModif = coalesce(toDate(FechaVenta,'MM/dd/yyyy'),toDate(FechaVenta,'yyyy/MM/dd'),toDate(FechaVenta,'dd/MM/yyyy'),toDate(FechaVenta,'MMddyyyy'),toDate(FechaVenta,'yyyyddMM'),toDate(FechaVenta,'MMddyyyy'),toDate(FechaVenta,'yyyyMMdd'))) ~> DerivedColumn1\nDerivedColumn1 sink(allowSchemaDrift: true,\n\tvalidateSchema: false,\n\tskipDuplicateMapInputs: true,\n\tskipDuplicateMapOutputs: true,\n\tmapColumn(\n\t\tIDVentas,\n\t\tFechaVenta = FechaVentaModif,\n\t\tDNICliente,\n\t\tImporte,\n\t\tIDItem,\n\t\tNumFactura\n\t),\n\tpartitionBy('hash', 1)) ~> sinkVentasCSV"
 		}
 	}
 }
