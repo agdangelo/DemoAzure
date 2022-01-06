@@ -21,7 +21,7 @@
 				},
 				"container": "filedateconvertidossol1"
 			},
-			"columnDelimiter": ",",
+			"columnDelimiter": ";",
 			"escapeChar": "\\",
 			"firstRowAsHeader": true,
 			"quoteChar": "\""
