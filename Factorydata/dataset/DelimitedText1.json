@@ -10,7 +10,8 @@
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobStorageLocation",
-				"container": "ventasrawsol1"
+				"folderPath": "csvSol1",
+				"container": "archivossol1"
 			},
 			"columnDelimiter": ";",
 			"escapeChar": "\\",
