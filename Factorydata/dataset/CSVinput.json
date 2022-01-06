@@ -19,8 +19,7 @@
 					"value": "@dataset().NombreArchivoCSV",
 					"type": "Expression"
 				},
-				"folderPath": "csvSol1",
-				"container": "archivossol1"
+				"container": "filedateconvertidossol1"
 			},
 			"columnDelimiter": ";",
 			"escapeChar": "\\",
