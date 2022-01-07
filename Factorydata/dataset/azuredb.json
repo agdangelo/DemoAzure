@@ -1,0 +1,23 @@
+{
+	"name": "azuredb",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "sol1LinkService",
+			"type": "LinkedServiceReference"
+		},
+		"parameters": {
+			"NombreTabla": {
+				"type": "string"
+			}
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [],
+		"typeProperties": {
+			"table": {
+				"value": "@dataset().NombreTabla",
+				"type": "Expression"
+			}
+		}
+	}
+}
